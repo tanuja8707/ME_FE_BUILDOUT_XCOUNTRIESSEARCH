@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import  { useState, useEffect } from 'react'
+import  { useState, useEffect } from 'react';
 
 function App() {
   const [countries,setCountries] = useState([]);
@@ -23,18 +22,6 @@ function App() {
     getCountriesData();
   },[])
 
-  const imageStyle = {
-    width: "100px",height:"100px"
-  };
-
-  const container = {
-    display:"flex",flexWrap:"wrap",justifyContent:"center",alignItems:"center",height:"100vh"
-  };
-
-  const countryCard = {
-    width:"200px",border:"1px solid #ccc",borderRadius:"10px",margin:"10px",display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center"
-  }
-
   useEffect( () => {
     try {
       const filtered = countries.filter(country =>
@@ -55,13 +42,13 @@ function App() {
   }
 
   return (
-    <div style={container}>
+    <div className="container">
       <div className='searchBox'>
         <input type="text" value={searchValue} onChange={handleSearch}  placeholder="Search for countries..."/>
       </div>
       {filteredCountries.map((country) => ( 
-        <div key={country.cca3} style={countryCard}>
-          <img src={country.flags.png} alt={`Flag of ${country.name.common}`} style={imageStyle} />
+        <div key={country.cca3} className='countryCard'>
+          <img src={country.flags.png} alt={`Flag of ${country.name.common}`} className='imageStyle' />
           <h3>{country.name.common}</h3>
         </div>
       ))}
